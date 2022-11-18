@@ -1,12 +1,8 @@
 <h1 align="center">
-  Rotation Trigonometry
+  Solids of Revolution
 </h1>
 
-This project is a uses uses a general rotation matrix to calculate the rotation
-of a model consisting of [x,y,z] vertices to represent each point in it's shape.
-The models consist of a sequence of numpy arrays to represent each vertex and
-a sequence of tuples with 2 indexes to represent the edges of the model. The
-model of choice is generated at the start and rendered using pygame.
+The motivation for this fork was to create and render three-dimensional solids of revolution. The function of a given interval is broken up, and a circle of points with radius f(x) is calculated using rotation matrices for each of the slices.
 
 ## Demo
 
@@ -40,23 +36,25 @@ Available Models:
 
 ### To change the function
 
-To change the displayed function edit the return value of `f_main` in `src/main.py`
+To change the displayed function edit the `Function` parameter in `assets/FunctionConfig.json`
+
+The displayed interval is defined by `a` and `b` in the same file.
 
 Various functions will provide various shapes
 
-####Linear functions
+#### Linear functions
 
 <div align="center">
     <img src="/media/demo_cone.gif" height="400" alt="Linear function gif">
 </div>
 
-####Constants
+#### Constants
 
 <div align="center">
     <img src="/media/demo_sylinder.gif" height="400" alt="Constant function gif">
 </div>
 
-####Squared functions
+#### Squared functions
 
 <div align="center">
     <img src="/media/demo_dish.gif" height="400" alt="Squared function gif">

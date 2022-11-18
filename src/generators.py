@@ -13,7 +13,7 @@ class Generators:
 
 
     @staticmethod
-    def cube(func, radius: int = 1, iterations: int = 1) -> Shape:
+    def cube(radius: int = 1, iterations: int = 1) -> Shape:
         vertices = []
         edges = []
 
@@ -39,7 +39,7 @@ class Generators:
         
 
     @staticmethod
-    def sphere(func, radius: int = 2, rings: int = 30) -> Shape:
+    def sphere(radius: int = 2, rings: int = 30) -> Shape:
         vertices = []
         edges = []
 
@@ -57,18 +57,18 @@ class Generators:
         return vertices, edges
 
     @staticmethod
-    def function(func, a: int = 0, b: int = 50) -> Shape:
+    def function(func, a: int = 0, b: int = 100) -> Shape:
         vertices = [];
         edges = [];
 
-        for vertical in range(a, b):
+        for x_val in range(a, b):
 
-            for horizontal in range((b-a)):
-                h_angle = radians((360 / (b * 100 - a * 100)) * horizontal * 100)
+            for vertical in range((b-a)):
+                h_angle = radians((360 / (b * 100 - a * 100)) * vertical * 100)
 
-                x = (-func(vertical) * sin(h_angle)) / 3
-                y = (func(vertical) * cos(h_angle)) / 3
-                z = vertical / 3
+                x = (-func(x_val) * sin(h_angle)) / 3
+                y = (func(x_val) * cos(h_angle)) / 3
+                z = x_val / 3
 
                 vertices.append(np.array((x, y, z)))
 
