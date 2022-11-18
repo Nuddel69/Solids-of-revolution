@@ -7,7 +7,8 @@ from core import Shape
 class Generators:
     __all__ = [
         'cube',
-        'sphere'
+        'sphere',
+        'function',
     ]
 
 
@@ -50,6 +51,28 @@ class Generators:
                 x = radius * cos(v_angle) * cos(h_angle)
                 y = radius * cos(v_angle) * sin(h_angle)
                 z = radius * sin(v_angle)
+
+                vertices.append(np.array((x, y, z)))
+
+        return vertices, edges
+
+    @staticmethod
+    def function(func, a: int = 0, b: int = 50) -> Shape:
+        vertices = [];
+        edges = [];
+
+        for vertical in range(a, b):
+
+            for horizontal in range((b-a)):
+                h_angle = radians((360 / (b * 100 - a * 100)) * horizontal * 100)
+
+                # x = func(vertical) * cos(v_angle) * cos(h_angle)
+                # y = func(vertical) * cos(v_angle) * sin(h_angle)
+                # z = horizontal
+
+                x = (-func(vertical) * sin(h_angle)) / 2
+                y = (func(vertical) * cos(h_angle)) / 2
+                z = vertical / 2
 
                 vertices.append(np.array((x, y, z)))
 

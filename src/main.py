@@ -31,6 +31,9 @@ def main(path: str, model: Model) -> None:
         gui.update_display()
 
 
+def test(x):
+    return x**2;
+
 if __name__ == '__main__':
     abs_path = Path(__file__).resolve().parent
 
@@ -47,8 +50,7 @@ if __name__ == '__main__':
                 print(f'{index+1:<{2}} : {model_name}')
 
             choice = int(input('\n> '))
-            model = Model(*getattr(Generators, Generators.__all__[choice-1])())
-            
+            model = Model(*getattr(Generators, Generators.__all__[choice-1])(test))
             break
     
     main(abs_path, model)
