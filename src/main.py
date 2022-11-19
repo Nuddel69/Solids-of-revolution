@@ -35,8 +35,6 @@ def main(path: str, model: Model, isFunc) -> None:
         
         gui.update_display()
 
-
-
 if __name__ == '__main__':
     abs_path = Path(__file__).resolve().parent
 

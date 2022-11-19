@@ -38,6 +38,8 @@ class Gui:
 
         self._terminated = False
 
+        self._render_function = False;
+
 
     @property
     def terminated(self) -> bool:
@@ -82,11 +84,11 @@ class Gui:
         self._func = _config['Function'];
         self._lima = _config['a'];
         self._limb = _config['b'];
-        self.renderFunction = True;
+        self._renderFunction = True;
         pass
 
     def render_info(self) -> None:
-        if (self.render_function):
+        if (self._render_function):
             info = [
                     f'FPS: {self._clock.get_fps():.2f}',
                 'X rotation: U/J',
