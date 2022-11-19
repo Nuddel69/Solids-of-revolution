@@ -25,9 +25,11 @@ cd Rotation-Trigonometry
 ./prerequisites.sh
 ```
 
-It may be required to run `chmod +x prerequisites.sh` in order to run the shell script. Alternatively you may run the pip install command directly:
+You may need to run `chmod +x prerequisites.sh` in order to execute the shell script. Alternatively you may run the pip install command directly:
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt`
+```
 
 ## Usage
 
