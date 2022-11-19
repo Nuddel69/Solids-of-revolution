@@ -11,9 +11,23 @@ The motivation for this fork was to create and render three-dimensional solids o
     <img src="/media/showcase_dish.gif" height="400">
 </div>
 
+## Requirements
+
+- locally installed python 3
+
 ## Setup
 
-See [main](https://github.com/Serphyus/Rotation-Trigonometry.git) repository.
+Clone repository and execute installation script for required packages
+
+```
+git clone https://github.com/Serphyus/Rotation-Trigonometry.git
+cd Rotation-Trigonometry
+./prerequisites.sh
+```
+
+It may be required to run `chmod +x prerequisites.sh` in order to run the shell script. Alternatively you may run the pip install command directly:
+
+`pip install -r requirements.txt`
 
 ## Usage
 
