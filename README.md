@@ -7,8 +7,8 @@ The motivation for this fork was to create and render three-dimensional solids o
 ## Demo
 
 <div align="center">
-    <img src="/media/demo_cube.gif" height="400">
-    <img src="/media/demo_sphere.gif" height="400">
+    <img src="/media/showcase_cone.gif" height="400">
+    <img src="/media/showcase_dish.gif" height="400">
 </div>
 
 ## Setup
