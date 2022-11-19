@@ -2,9 +2,11 @@ import numpy as np
 from math import radians, cos, sin
 
 from core import Shape
+from solid_of_revolution import Revolution_function
 
 
 class Generators:
+
     __all__ = [
         'cube',
         'sphere',
@@ -57,7 +59,12 @@ class Generators:
         return vertices, edges
 
     @staticmethod
-    def function(func, a: int = 0, b: int = 100, accuracy: int = 300) -> Shape:
+    def function(accuracy: int = 300) -> Shape:
+        _func = Revolution_function();
+        func = _func.f_main;
+        a: int = _func._a;
+        b: int = _func._b;
+
         vertices = [];
         edges = [];
 

@@ -9,7 +9,6 @@ import core
 from gui import Gui
 from model import Model
 from generators import Generators
-from solid_of_revolution import Revolution_function
 
 
 def main(path: str, model: Model, isFunc, args) -> None:
@@ -52,7 +51,7 @@ if __name__ == '__main__':
     
     abs_path = Path(__file__).resolve().parent
 
-    func = Revolution_function();
+    isFunc = False;
     model = None
     while model is None:
         with suppress(IndexError, ValueError):
@@ -66,12 +65,10 @@ if __name__ == '__main__':
                 print(f'{index+1:<{2}} : {model_name}')
 
             choice = int(input('\n> '))
-            if (Generators.__all__[choice-1] == 'function'):
-                model = Model(*getattr(Generators, Generators.__all__[choice-1])(func.f_main, func._a, func._b))
-                isFunc = True;
-            else:
-                model = Model(*getattr(Generators, Generators.__all__[choice-1])())
-                isFunc = False;
+
+            if (Generators.__all__[choice-1] == 'function') : isFunc = True;
+            
+            model = Model(*getattr(Generators, Generators.__all__[choice-1])())
             break
     
     main(abs_path, model, isFunc, args);
