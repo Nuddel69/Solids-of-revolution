@@ -84,7 +84,7 @@ class Gui:
         self._func = _config['Function'];
         self._lima = _config['a'];
         self._limb = _config['b'];
-        self._renderFunction = True;
+        self._render_function = True;
         pass
 
     def render_info(self) -> None:

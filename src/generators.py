@@ -57,17 +57,17 @@ class Generators:
         return vertices, edges
 
     @staticmethod
-    def function(func, a: int = 0, b: int = 100, accuracy: int = 100) -> Shape:
+    def function(func, a: int = 0, b: int = 100, accuracy: int = 300) -> Shape:
         vertices = [];
         edges = [];
 
         for x_val in range(a, b + 1):
 
-            for vertical in range(0, accuracy):
-                h_angle = radians((360 / accuracy) * vertical)
+            for increment in range(0, accuracy):
+                θ = radians((360 / accuracy) * increment)
 
-                x = (-func(x_val) * sin(h_angle)) / 3
-                y = (func(x_val) * cos(h_angle)) / 3
+                x = (-func(x_val) * sin(θ)) / 3
+                y = (func(x_val) * cos(θ)) / 3
                 z = x_val / 3
 
                 vertices.append(np.array((x, y, z)))
