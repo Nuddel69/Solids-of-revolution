@@ -74,13 +74,35 @@ class Gui:
                 pygame.draw.aaline(self._display, self._model_color, vertex_1, vertex_2, True)
     
 
+    def render_function(self) -> None:
+        abs_path = Path(__file__).resolve().parent
+        with open(Path(abs_path, '../assets', 'FunctionConfig.json'), 'r') as _file:
+            _config = json.load(_file)
+
+        self._func = _config['Function'];
+        self._lima = _config['a'];
+        self._limb = _config['b'];
+        self.renderFunction = True;
+        pass
+
     def render_info(self) -> None:
-        info = [
-            f'FPS - {self._clock.get_fps():.2f}',
-            'X rotation - U/J',
-            'Y rotation - I/K',
-            'Z rotation - O/L',
-        ]
+        if (self.render_function):
+            info = [
+                    f'FPS: {self._clock.get_fps():.2f}',
+                'X rotation: U/J',
+                'Y rotation: I/K',
+                'Z rotation: O/L',
+                '',
+                f'Function: f(x) = {self._func}',
+                f'Interval: [{self._lima}, {self._limb}]',
+            ]
+        else:
+            info = [
+                f'FPS - {self._clock.get_fps():.2f}',
+                'X rotation - U/J',
+                'Y rotation - I/K',
+                'Z rotation - O/L',
+            ]
 
         for index, text in enumerate(info):
             self._render_text(text, (8, (index*25) + 5))

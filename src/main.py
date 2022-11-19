@@ -10,7 +10,7 @@ from generators import Generators
 from solid_of_revolution import Revolution_function
 
 
-def main(path: str, model: Model) -> None:
+def main(path: str, model: Model, isFunc) -> None:
     gui = Gui(Path(path, '../assets'))
 
     while not gui.terminated:
@@ -27,13 +27,15 @@ def main(path: str, model: Model) -> None:
             model.set_vertices(new_vertices)
         
         gui.render_model(model)
+
+        if (isFunc):
+            gui.render_function();
+
         gui.render_info()
         
         gui.update_display()
 
 
-def f_main(x):
-    return x;
 
 if __name__ == '__main__':
     abs_path = Path(__file__).resolve().parent
@@ -53,9 +55,11 @@ if __name__ == '__main__':
 
             choice = int(input('\n> '))
             if (Generators.__all__[choice-1] == 'function'):
-                model = Model(*getattr(Generators, Generators.__all__[choice-1])(func.f_main))
+                model = Model(*getattr(Generators, Generators.__all__[choice-1])(func.f_main, func._a, func._b))
+                isFunc = True;
             else:
                 model = Model(*getattr(Generators, Generators.__all__[choice-1])())
+                isFunc = False;
             break
     
-    main(abs_path, model)
+    main(abs_path, model, isFunc);

@@ -17,6 +17,8 @@ See [main](https://github.com/Serphyus/Rotation-Trigonometry.git) repository.
 
 ## Usage
 
+### Basic usage
+
 run the main.py located in the src directory
 
 ```
