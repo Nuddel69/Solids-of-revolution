@@ -36,11 +36,12 @@ Available Models:
 > _
 ```
 
-### To change the function
+### To edit the function parameters
 
-To change the displayed function edit the `Function` parameter in `assets/FunctionConfig.json`
+All configuration for the Function model is done in `assets/FunctionConfig.json`.
 
-The displayed interval is defined by `a` and `b` in the same file.
+To change the displayed function edit the `Function` parameter.
+The displayed interval is defined by `a` and `b`.
 
 Various functions will provide various shapes
 
@@ -61,3 +62,7 @@ Various functions will provide various shapes
 <div align="center">
     <img src="/media/demo_dish.gif" height="400" alt="Squared function gif">
 </div>
+
+### Demo mode
+
+If you want to render the model **without** the GUI or controls you can use _demo mode_. Simply execute the main.py file with the -d (--demo) flag and choose a model. While the model will now move on it's own, regular controls will still affect it's movement.
