@@ -1,7 +1,9 @@
 import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import sys
 from pathlib import Path
 from contextlib import suppress
+import argparse
 
 import core
 from gui import Gui
@@ -10,8 +12,15 @@ from generators import Generators
 from solid_of_revolution import Revolution_function
 
 
-def main(path: str, model: Model, isFunc) -> None:
-    gui = Gui(Path(path, '../assets'))
+def main(path: str, model: Model, isFunc, args) -> None:
+    if (args.demo):
+        gui = Gui(Path(path, '../assets'), True);
+    else:
+        gui = Gui(Path(path, '../assets'));
+
+
+    if (isFunc):
+        gui.render_function();
 
     while not gui.terminated:
         rotation = gui.get_rotation()
@@ -28,14 +37,19 @@ def main(path: str, model: Model, isFunc) -> None:
         
         gui.render_model(model)
 
-        if (isFunc):
-            gui.render_function();
-
-        gui.render_info()
+        if (args.demo == 0):
+            gui.render_info()
         
         gui.update_display()
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        prog = 'main.py')
+
+    parser.add_argument("-d", "--demo", dest="demo", action="store_true", help="run program demo");
+
+    args = parser.parse_args();
+    
     abs_path = Path(__file__).resolve().parent
 
     func = Revolution_function();
@@ -60,4 +74,4 @@ if __name__ == '__main__':
                 isFunc = False;
             break
     
-    main(abs_path, model, isFunc);
+    main(abs_path, model, isFunc, args);

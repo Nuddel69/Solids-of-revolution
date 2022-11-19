@@ -9,7 +9,7 @@ from core import Rotation
 
 
 class Gui:
-    def __init__(self, assets_dir: Path) -> None:
+    def __init__(self, assets_dir: Path, demo: bool = False) -> None:
         pygame.init()
 
         with open(Path(assets_dir, 'config.json'), 'r') as _file:
@@ -39,6 +39,8 @@ class Gui:
         self._terminated = False
 
         self._render_function = False;
+
+        self._demo = demo;
 
 
     @property
@@ -130,11 +132,11 @@ class Gui:
 
         keys = pygame.key.get_pressed()
         
-        if keys[pygame.K_u]: rotation[0] += self._rotation_speed
-        if keys[pygame.K_i]: rotation[1] += self._rotation_speed
+        if (keys[pygame.K_u] or self._demo): rotation[0] += self._rotation_speed
+        if (keys[pygame.K_i] or self._demo): rotation[1] += self._rotation_speed
         if keys[pygame.K_o]: rotation[2] += self._rotation_speed
         if keys[pygame.K_j]: rotation[0] -= self._rotation_speed
         if keys[pygame.K_k]: rotation[1] -= self._rotation_speed
-        if keys[pygame.K_l]: rotation[2] -= self._rotation_speed
+        if (keys[pygame.K_l] or self._demo): rotation[2] -= self._rotation_speed
 
         return rotation
