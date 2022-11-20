@@ -32,6 +32,9 @@ def main(path: str, model: Model, isFunc, args) -> None:
             rotation_matrix = core.create_matrix(rotation)
             
             new_vertices = core.rotate_vertices(old_vertices, rotation_matrix)
+
+            # For quaternion rotation use this instead
+            # new_vertices = core.rotate_quaternion(old_vertices, rotation);
             model.set_vertices(new_vertices)
         
         gui.render_model(model)
