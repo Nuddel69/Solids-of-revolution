@@ -13,7 +13,7 @@ The motivation for this fork was to create and render three-dimensional solids o
 
 ## Requirements
 
-- locally installed python 3
+- Locally installed python 3
 
 ## Setup
 
@@ -35,13 +35,13 @@ pip install -r requirements.txt`
 
 ### Basic usage
 
-run the main.py located in the src directory
+Run the main.py located in the src directory
 
 ```
 py src/main.py
 ```
 
-choose model to render
+Choose model to render
 
 ```
 Available Models:
@@ -59,7 +59,7 @@ All configuration for the Function model can be found in `assets/FunctionConfig.
 To change the displayed function edit the `Function` parameter.
 The displayed interval is defined by `a` and `b`.
 
-To adjust the accuracy of the displayed model edit `Ring Accuracy` and 'Interval Accuracy'. `Ring Accuracy` adjusts the number of points for each slice. 'Interval Accuracy' adjusts how many slices is generated between each value 'x'. The latter of these takes a number <0.0, 1.0> as an argument.
+To adjust the accuracy of the displayed model edit `Ring Accuracy` and `Interval Accuracy`. `Ring Accuracy` adjusts the number of points for each slice. 'Interval Accuracy' adjusts how many slices is generated between each value 'x'. The latter of these takes a number `<0.0, 1.0>` as an argument.
 
 > **Note**  
 > Setting either of these accuracies too high will severely affect performance.
