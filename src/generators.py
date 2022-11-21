@@ -62,13 +62,16 @@ class Generators:
     def function(accuracy: int = 300) -> Shape:
         _func = Revolution_function();
         func = _func.f_main;
+        accuracy = _func._ring_accuracy;
+        slices = _func._interval_accuracy;
+
         a: int = _func._a;
         b: int = _func._b;
 
         vertices = [];
         edges = [];
 
-        for x_val in range(a, b + 1):
+        for x_val in np.arange(a, b+1, slices):
 
             for increment in range(0, accuracy):
                 θ = radians((360 / accuracy) * increment)

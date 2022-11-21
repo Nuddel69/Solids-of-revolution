@@ -1,5 +1,7 @@
 {
   "Function": "x",
   "a": -10,
-  "b": 10
+  "b": 10,
+  "Ring Accuracy": 300,
+  "Interval Accuracy": 0.5
 }

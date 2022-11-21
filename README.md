@@ -52,12 +52,17 @@ Available Models:
 > _
 ```
 
-### To edit the function parameters
+### Configuring the function parameters
 
-All configuration for the Function model is done in `assets/FunctionConfig.json`.
+All configuration for the Function model can be found in `assets/FunctionConfig.json`.
 
 To change the displayed function edit the `Function` parameter.
 The displayed interval is defined by `a` and `b`.
+
+To adjust the accuracy of the displayed model edit `Ring Accuracy` and 'Interval Accuracy'. `Ring Accuracy` adjusts the number of points for each slice. 'Interval Accuracy' adjusts how many slices is generated between each value 'x'. The latter of these takes a number <0.0, 1.0> as an argument.
+
+> **Note**  
+> Setting either of these accuracies too high will severely affect performance.
 
 Various functions will provide various shapes
 

@@ -10,6 +10,8 @@ class Revolution_function:
 
         self._a = self._config['a'];
         self._b = self._config['b'];
+        self._ring_accuracy = self._config['Ring Accuracy'];
+        self._interval_accuracy= self._config['Interval Accuracy'];
 
     def f_main(self, x):
         return eval(self._config['Function']);
