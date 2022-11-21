@@ -64,6 +64,7 @@ To adjust the accuracy of the displayed model edit `Ring Accuracy` and 'Interval
 > **Note**  
 > Setting either of these accuracies too high will severely affect performance.
 
+<br>
 Various functions will provide various shapes
 
 #### Linear functions
