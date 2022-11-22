@@ -3,7 +3,6 @@ from math import sin, cos, radians
 
 from typing import Union, Tuple, Sequence
 
-
 Numeric = Union[int, float]
 
 Rotation = Tuple[Numeric, Numeric, Numeric]
@@ -20,6 +19,17 @@ class Quaternion:
         self._z = 0;
         self._val = (self._w, self._x, self._y, self._z);
 
+    def get_conjugate(self):
+        w, x, y, z = self._val;
+        result = Quaternion.from_value(np.array((w, -x, -y, -z)));
+        return result;
+
+    def updateLocal(self):
+        self._w = self._val[0];
+        self._x = self._val[1];
+        self._y = self._val[2];
+        self._z = self._val[3];
+
     def __mul__(self, b):
 
         if isinstance(b, Quaternion):
@@ -31,16 +41,17 @@ class Quaternion:
         else:
             raise Exception(f"Multiplication with unknown type {type(b)}");
 
-    def get_conjugate(self):
-        w, x, y, z = self._val;
-        result = Quaternion.from_value(np.array((w, -x, -y, -z)));
-        return result;
+    def __add__(self, b: Quaternion):
+        if isinstance(b, Quaternion):
+            self.updateLocal();
+            b.updateLocal();
+            self.add_quaternion(self, b);
+        else:
+            raise Exception(f"Addition with unknown type {type(b)}")
+        pass
 
-    def updateLocal(self):
-        self._w = self._val[0];
-        self._x = self._val[1];
-        self._y = self._val[2];
-        self._z = self._val[3];
+    def add_quaternion(a: Quaternion, b: Quaternion):
+        pass
 
     def q_from_axisangle(self, v, theta):
         v = normalise(v);
@@ -201,60 +212,4 @@ class Quaternion:
         w, v = self.get_axisangle()
         return np.linalg.norm(v)
 '''
-
-
-def create_matrix(rotation: Rotation) -> np.ndarray:
-    """
-    creates a general rotation matrix using the rotation provided
-    γ : roll  (x rotation)
-    β : pitch (y rotation)
-    α : yaw   (z rotation)
-
-        [cos(z) cos(y)    cos(z) sin(y) sin(x) - sin(z) cos(x)    cos(z) sin(y) cos(x) + sin(z) sin(x)]
-    R = [sin(z) cos(y)    sin(z) sin(y) sin(x) + cos(z) cos(x)    sin(z) sin(y) cos(x) - cos(z) sin(x)]
-        [   -sin(y)                    cos(y) sin(x)                          cos(y) cos(x)           ]
-    """
-    x, y, z = map(radians, rotation)
-    
-    matrix = np.array([
-        [cos(z) * cos(y),    cos(z) * sin(y) * sin(x) - sin(z) * cos(x),    cos(z) * sin(y) * cos(x) + sin(z) * sin(x)],
-        [sin(z) * cos(y),    sin(z) * sin(y) * sin(x) + cos(z) * cos(x),    sin(z) * sin(y) * cos(x) - cos(z) * sin(x)],
-        [   -sin(y),                      cos(y) * sin(x),                               cos(y) * cos(x)              ]
-    ])
-
-    return matrix
-
-def rotate_vertices(vertices: Vertices, matrix: np.ndarray) -> Sequence[Vertices]:
-    """performs a calculation of the matrix argument on each vertex"""
-    return [np.matmul(matrix, vertex) for vertex in vertices]
-
-x_axis_unit = (1, 0, 0);
-y_axis_unit = (0, 1, 0);
-z_axis_unit = (0, 0, 1);
-
-def rotate_quaternion(vertices: Vertices, rotation: Rotation):
-    rx = Quaternion();
-    print(rx);
-    rx = rx.q_from_axisangle(x_axis_unit, rotation[0]);
-
-    ry = Quaternion();
-    ry = ry.q_from_axisangle(y_axis_unit, rotation[1]);
-
-    rz = Quaternion();
-    rz = rz.q_from_axisangle(z_axis_unit, rotation[2]);
-
-
-    #Qr.Quaternion()
-    #Qr = Qr.euler_to_quaternion(rotation);
-
-    return [(rz * (ry * (rx * vertex))) for vertex in vertices];
-
-
-
-
-
-
-
-
-
 

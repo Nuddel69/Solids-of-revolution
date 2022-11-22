@@ -20,8 +20,8 @@ The motivation for this fork was to create and render three-dimensional solids o
 Clone repository and execute installation script for required packages
 
 ```
-git clone https://github.com/Serphyus/Rotation-Trigonometry.git
-cd Rotation-Trigonometry
+git clone https://github.com/Nuddel69/Solids-of-revolution.git
+cd Solids-of-revolution
 ./prerequisites.sh
 ```
 

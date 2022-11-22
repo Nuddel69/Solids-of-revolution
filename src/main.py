@@ -10,7 +10,6 @@ from gui import Gui
 from model import Model
 from generators import Generators
 
-
 def main(path: str, model: Model, isFunc, args) -> None:
     if (args.demo):
         gui = Gui(Path(path, '../assets'), True);
