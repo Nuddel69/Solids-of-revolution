@@ -14,6 +14,7 @@ The motivation for this fork was to create and render three-dimensional solids o
 ## Requirements
 
 - Locally installed python 3
+- Git
 
 ## Setup
 
