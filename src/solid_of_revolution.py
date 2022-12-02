@@ -1,4 +1,5 @@
 from pathlib import Path
+from math import sin, cos, radians, sqrt
 import json
 
 class Revolution_function:
